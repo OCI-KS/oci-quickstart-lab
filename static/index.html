@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>OCI Quickstart Lab</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+        $(document).ready(function () {
+
+            $('form > input').keyup(function() {
+
+                var empty = false;
+                $('form > input').each(function() {
+                    if ($(this).val() == '') {
+                        empty = true;
+                    }
+                });
+
+                if (empty) {
+                    $('#notify').attr('disabled', 'disabled');
+                } else {
+                    $('#notify').removeAttr('disabled');
+                }
+            });
+
+            $('form#send-notification').submit(function(event) {
+                //socket.emit('my_broadcast_event', {data: $('#send-notification').val()});
+                url = 'http://' + $('input#ip').val() + '/ping/' + $('input#token').val();
+                location.href = url;
+                return false;
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+<div class="logo">
+    <img src="OCI_logo.png">
+</div>
+<h1 class="title">OCI Quickstart Lab</h1>
+<div class="content">
+    <form id="send-notification" method="POST" action='#'>
+        <input type="text" name="ip" id="ip" placeholder="Please insert instructor's lab IP">
+        <input type="text" name="token" id="token" placeholder="Please insert your ID">
+        <input type="submit" id="notify" value="I've completed my lab" disabled="disabled">
+    </form>
+</div>
+</body>
+</html>

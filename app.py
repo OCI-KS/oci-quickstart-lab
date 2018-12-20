@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from flask import Flask, render_template
 from flask_socketio import SocketIO
+from requests import get
 
 import logging
 logging.basicConfig(filename='quickstart.log', level=logging.INFO)
@@ -12,8 +13,6 @@ async_mode = None
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, async_mode=async_mode)
-
-
 
 
 @app.route('/')
@@ -37,7 +36,9 @@ def ping(postID):
 
 @app.route('/lab')
 def lab_monitor():
-    return render_template('lab_monitor.html')
+
+    ip = get('https://api.ipify.org').text
+    return render_template('lab_monitor.html', ip=ip)
 
 
 @socketio.on('connect', namespace='/quickstart')

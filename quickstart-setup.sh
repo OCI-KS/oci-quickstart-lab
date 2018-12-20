@@ -8,7 +8,7 @@
 yum install -y httpd mod_proxy_html
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python get-pip.py
-pip install flask flask-socketio gevent
+pip install flask flask-socketio gevent requests
 
 touch /etc/httpd/conf.d/quickstart.conf
 cat quickstart.conf > /etc/httpd/conf.d/quickstart.conf
