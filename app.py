@@ -2,6 +2,10 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO
 
+import logging
+logging.basicConfig(filename='quickstart.log', level=logging.INFO)
+
+
 async_mode = None
 
 app = Flask(__name__)
@@ -22,6 +26,7 @@ connection_count = 0
 @app.route('/ping/<postID>')
 def ping(postID):
     global lab_completed
+    logging.info('Completed lab: {}'.format_map(postID))
     lab_completed.append(postID)
     _update_lab_detail()
 
