@@ -22,4 +22,4 @@ firewall-cmd --reload
 systemctl enable httpd
 systemctl restart httpd
 
-./app.py &
+./app.py > stdout.log 2>&1 &

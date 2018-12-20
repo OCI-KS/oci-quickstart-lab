@@ -4,6 +4,7 @@ from flask_socketio import SocketIO
 
 import logging
 logging.basicConfig(filename='quickstart.log', level=logging.INFO)
+logging.getLogger("socketio").setLevel(logging.ERROR)
 
 
 async_mode = None
@@ -26,7 +27,9 @@ connection_count = 0
 @app.route('/ping/<postID>')
 def ping(postID):
     global lab_completed
-    logging.info('Completed lab: {}'.format_map(postID))
+    logging.info('_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    logging.info(' * Completed lab: {} *'.format(postID))
+    logging.info('_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
     lab_completed.append(postID)
     _update_lab_detail()
 
