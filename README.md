@@ -25,7 +25,7 @@ Quickstart lab script to setup a reactive web application to register students l
 
 * Complete the lab reattaching boot volume and blockvolume to a different shape
 
-* Move in the _quickstart_
+* Move in the _quickstart_ directory
 
 * Run the command below to restart the service
 ```bash
